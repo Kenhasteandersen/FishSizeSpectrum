@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547284617534.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4253C93B",
+    "lastKnownWriteTime" : 1547284628,
+    "last_content_update" : 1547284628,
+    "path" : "~/Documents/Source/FishSizeSpectrum/inst/SingleStockCalculator/SingleStockCalculatorUI.R",
+    "project_path" : "inst/SingleStockCalculator/SingleStockCalculatorUI.R",
+    "properties" : {
+        "cursorPosition" : "556,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

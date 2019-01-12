@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547285109436.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "5976A13A",
+    "lastKnownWriteTime" : 1547293774,
+    "last_content_update" : 1547293774987,
+    "path" : "~/Documents/Source/FishSizeSpectrum/man/fishsizespectrum-package.Rd",
+    "project_path" : "man/fishsizespectrum-package.Rd",
+    "properties" : {
+        "cursorPosition" : "16,44",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

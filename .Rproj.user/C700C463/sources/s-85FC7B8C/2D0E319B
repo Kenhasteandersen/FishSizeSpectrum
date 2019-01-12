@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547278101634.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2D0E319B",
+    "lastKnownWriteTime" : 1547285684,
+    "last_content_update" : 1547285684294,
+    "path" : "~/Documents/Source/FishSizeSpectrum/R/baseparameters.R",
+    "project_path" : "R/baseparameters.R",
+    "properties" : {
+        "cursorPosition" : "33,14",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

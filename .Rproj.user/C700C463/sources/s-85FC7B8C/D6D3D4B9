@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547278060381.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D6D3D4B9",
+    "lastKnownWriteTime" : 1547286863,
+    "last_content_update" : 1547286863868,
+    "path" : "~/Documents/Source/FishSizeSpectrum/R/basefunctions.R",
+    "project_path" : "R/basefunctions.R",
+    "properties" : {
+        "cursorPosition" : "123,0",
+        "docOutlineVisible" : "1",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
