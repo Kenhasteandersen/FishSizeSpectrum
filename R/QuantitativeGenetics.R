@@ -1,33 +1,7 @@
 #
 #  Code for quantitative genetics (fisheries induced evolution)
 #
-
-# Stolen from "pracma":
-cumtrapz <- function(x, y) {
-  if (missing(y)) {
-    if (length(x) == 0) return(0)
-    y <- x
-    x <- 1:length(x)
-  }
-  if (length(x) == 0) return(0)
-  if (!(is.numeric(x) || is.complex(x)) ||
-      !(is.numeric(y) || is.complex(y)))
-    stop("Arguments 'x' and 'y' must be real or complex.")
-  
-  x <- as.matrix(c(x))
-  m <- length(x)
-  if (is.vector(y)) y <- as.matrix(y)
-  if (nrow(y) != m)
-    stop("Arguments 'x' and 'y' are not compatible: nrow(y) != length(x).")
-  
-  n  <- ncol(y)
-  dt <- repmat(diff(x)/2, 1, n)
-  ct <- apply(dt * (y[1:(m-1), ] + y[2:m, ]), 2, cumsum)
-  
-  return(rbind(zeros(1, n), ct))
-}
-
-
+library(pracma)
 
 baseparamQG <- function(wm=1000, kr=NULL, p=baseparameters()) {
   p$wm <- wm

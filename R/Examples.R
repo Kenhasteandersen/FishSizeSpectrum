@@ -16,7 +16,7 @@ SingleStockAssessment <- function(W=10000, param=baseparameters(W), F=0.3) {
   N0 = spectrum(param)
   
   # Set fishing mortality:
-  p$F = F
+  param$F = F
   
   # Calc fished spectrum:
   N = spectrum(param)
@@ -25,8 +25,8 @@ SingleStockAssessment <- function(W=10000, param=baseparameters(W), F=0.3) {
   ref = calcRefpoints(param)
   
   # Print them out:
-  cat("Fisheries impact assessment on a stock with asymptotic weight", p$W, "g\n",
-      " Fishing mortality:",p$F,"yr^-1\n",
+  cat("Fisheries impact assessment on a stock with asymptotic weight", param$W, "g\n",
+      " Fishing mortality:",param$F,"yr^-1\n",
       " \nState:\n",
       " Spawning stock biomass (SSB) relative to max SSB:", N$SSBperR[1]/N0$SSBperR[1], "\n",
       " SSB/Bmsy:", N$SSBperR[1]/ref$Bmsy,"\n",

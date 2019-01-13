@@ -2,7 +2,35 @@
 # Basic functions for single-population calculations
 #
 
+library(pracma)
 library(deSolve)
+
+trapz <- function(x, y) {
+  if (missing(y)) {
+    if (length(x) == 0) return(0)
+    y <- x
+    x <- seq(along=x)
+  }
+  if (length(x) == 0 && length(y) == 0) return(0)
+  if (!(is.numeric(x) || is.complex(x)) ||
+      !(is.numeric(y) || is.complex(y)) )
+    stop("Arguments 'x' and 'y' must be real or complex vectors.")
+  m <- length(x)
+  if (length(y) != m)
+    stop("Arguments 'x', 'y' must be vectors of the same length.")
+  if (m <= 1) return(0.0)
+  
+  # z <- sum((x[2:m] - x[1:(m-1)]) * (y[1:(m-1)] + y[2:m]))
+  # return(0.5 * z)
+  
+  xp <- c(x, x[m:1])
+  yp <- c(numeric(m), y[m:1])
+  n <- 2*m
+  p1 <- sum(xp[1:(n-1)]*yp[2:n]) + xp[n]*yp[1]
+  p2 <- sum(xp[2:n]*yp[1:(n-1)]) + xp[1]*yp[n]
+  
+  return(0.5*(p1-p2))
+}
 
 # Length to weight calculation
 weight <- function(length)
@@ -266,9 +294,9 @@ calcRefpoints <- function(p)
 # Population growth rate from analytical approximation #1
 #
 calc_rana1 <- function(W,p=baseparameters()) {
-#  (p$A*(-1 + p$n)*p$w0^p$n*W^p$n*
-#     log((p$a*p$w0^(1 - p$a)*W^(-1 + p$a))/(p$epsEgg*p$epsR)))/
-#  (p$w0^p$n*W - p$w0*W^p$n)
+  #  (p$A*(-1 + p$n)*p$w0^p$n*W^p$n*
+  #     log((p$a*p$w0^(1 - p$a)*W^(-1 + p$a))/(p$epsEgg*p$epsR)))/
+  #  (p$w0^p$n*W - p$w0*W^p$n)
   p$A*(1-p$n) * (W^(1-p$n) - p$w0^(1-p$n))^(-1) * 
     ( (1-p$a)*log(W/p$w0)+log(p$epsEgg*p$epsR))
 }
