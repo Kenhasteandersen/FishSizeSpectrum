@@ -4,7 +4,7 @@ Date: 2019-01-12
 Title: Functions for size spectrum calculations of fish populations and communities
 Author: Ken H. Andersen
 Maintainer: Ken H. Andersen <kha@aqua.dtu.dk>
-Depends: R (>= 3.1.0), deSolve, limSolve, reshape, latex2exp
+Depends: R (>= 3.1.0), deSolve, limSolve, reshape, latex2exp, pracma
 Suggests: shiny,
     testthat
 Description: Contains all necessary functions for size spectrum calculations of fish stocks: 
