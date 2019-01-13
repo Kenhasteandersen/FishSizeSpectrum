@@ -9,6 +9,7 @@ import(
   deSolve,
   limSolve,
   reshape,
-  latex2exp,
-  pracma
+  latex2exp
 )
+importFrom(pracma, trapz, cumtrapz)
+importFrom("stats", "optimize", "rnorm", "time", "uniroot")

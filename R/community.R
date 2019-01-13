@@ -8,8 +8,8 @@
 
 require(limSolve)
 require(reshape)
-require(tictoc)
-require(deSolve)
+library(tictoc)
+library(deSolve)
 
 #
 # Base parameters for the trait-based model:

@@ -34,8 +34,8 @@ The details of the mathematical models and all parameters are in: K.H. Andersen 
 
 \keyword{ package }
 
-\seealso{
+%\seealso{
 %~~ Optional links to other man pages, e.g. ~~
 %~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
+%}
 
