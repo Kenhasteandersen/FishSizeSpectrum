@@ -9,5 +9,6 @@ import(
   deSolve,
   limSolve,
   reshape,
-  latex2exp
+  latex2exp,
+  pracma
 )
