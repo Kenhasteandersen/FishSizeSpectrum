@@ -10,10 +10,10 @@ library(fishsizespectrum)
 
 # Define the user interface
 SingleStockCalculatorUI <- fluidPage(
-  # Add google analytics tracking:
-  
-  # Make rules widers:
-  tags$head(
+    tags$head(
+    # Add google analytics tracking:
+    includeHTML(("googleanalytics.html")),
+    # Make rules widers:
     tags$style(HTML("hr {border-top: 1px solid #444444;}"))
   ),
   #
@@ -21,7 +21,7 @@ SingleStockCalculatorUI <- fluidPage(
   #
   h1('Single stock size spectrum calculator'),
   p('Calculate all demographic quantities and the response to fishing of single stock',
-    'using the procedures described in: K.H. Andersen (2019)',
+    'using the procedures described in: K.H.Andersen (2019)',
     em('Fish Ecology, Evolution, and Exploitation'), 
     'Princeton University Press.'),
   
@@ -502,7 +502,7 @@ SingleStockCalculatorServer <- function(input, output, session) {
                           TeX("$\\textit{F}_{lim}$"),
                           TeX("$\\textit{F}_{max}$"),
                           TeX("$\\textit{F}_{msy}$")),
-            main="Mortality reference points",
+            main="Mortatlity reference points",
             xlab=TeX("Fishing mortality (yr$^{-1}$)"),
             horiz=TRUE, las=1,
             border=NA)
