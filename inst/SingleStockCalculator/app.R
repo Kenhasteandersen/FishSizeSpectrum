@@ -5,6 +5,9 @@
 #  shinyApp(ui = SingleStockCalculatorUI, server = SingleStockCalculatorServer)
 #
 library(shiny)
+options(shiny.sanitize.errors = FALSE)
+library(fishsizespectrum)
+
 #source("R/basefunctions.R")
 #source("R/baseparameters.R")
 #source("R/plottools.R")
