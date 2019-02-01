@@ -8,15 +8,10 @@ library(shiny)
 options(shiny.sanitize.errors = FALSE)
 library(fishsizespectrum)
 
-#source("R/basefunctions.R")
-#source("R/baseparameters.R")
-#source("R/plottools.R")
-#source("R/QuantitativeGenetics.R")
-
-
-
 # Define the user interface
 SingleStockCalculatorUI <- fluidPage(
+  # Add google analytics tracking:
+  
   # Make rules widers:
   tags$head(
     tags$style(HTML("hr {border-top: 1px solid #444444;}"))
@@ -26,7 +21,9 @@ SingleStockCalculatorUI <- fluidPage(
   #
   h1('Single stock size spectrum calculator'),
   p('Calculate all demographic quantities and the response to fishing of single stock',
-    'using the procedures described in ',em('Fish: Ecology, Evolution, and Exploitation.')),
+    'using the procedures described in: K.H. Andersen (2019)',
+    em('Fish Ecology, Evolution, and Exploitation'), 
+    'Princeton University Press.'),
   
   sidebarLayout(
     #
@@ -235,7 +232,7 @@ updateClassicParam <- function(input, session) {
 # Define server logic
 SingleStockCalculatorServer <- function(input, output, session) {
   #
-  # Updated connected sliders between physilogical and classic parameters
+  # Update connected sliders between physiological and classic parameters
   #
   observeEvent({ 
     input$bClassicParameters
@@ -253,7 +250,7 @@ SingleStockCalculatorServer <- function(input, output, session) {
     }
   } )
   #
-  # Simulate the stock whenever a parameter is updated
+  # Simulate the stock whenever a parameter is updated:
   #
   simResults <- eventReactive({
     input$W10
@@ -271,7 +268,6 @@ SingleStockCalculatorServer <- function(input, output, session) {
     
   }, {
     param <- baseparameters()
-    
     #
     # Extract physiological parameters:
     #
@@ -287,7 +283,7 @@ SingleStockCalculatorServer <- function(input, output, session) {
     param$epsR <- 10^input$epsR10
     param$etaM <- input$etaM
     #
-    # Extract parameters related to fishing
+    # Extract parameters related to fishing:
     #
     param$etaF <- 10^input$etaF10
     #
@@ -300,14 +296,14 @@ SingleStockCalculatorServer <- function(input, output, session) {
     #
     refs <- calcRefpoints(param)
     #
-    # Calculate stock with fishing
+    # Calculate stock with fishing:
     #
     param$F <- refs$Fmsy
     if (!input$bMSY)
       param$F = input$F
     spec <- spectrum(param)
     #
-    # Setup physioligical parameters data frame:
+    # Setup  parameters data frame:
     #
     physparameters <- data.frame(
       Parameter = c("<i>Physiological parameters</i>",
@@ -339,15 +335,12 @@ SingleStockCalculatorServer <- function(input, output, session) {
       )
     )
     #
-    # Setup classic parameters data frame:
-    #
-    
-    #
     # Calculate selection respones:
     #
-    response <- calcSelectionResponse(p=baseparamQG(wm=param$etaM*param$W,p=param), F=param$F, W=param$W)
+    response <- calcSelectionResponse(p=baseparamQG(wm=param$etaM*param$W,p=param), 
+                                      F=param$F, W=param$W)
     #
-    # Set the results data frame:
+    # Set up the results data frame:
     #
     results <- data.frame(
       Quantity = c("<i>Recruitment</i>",
@@ -396,18 +389,11 @@ SingleStockCalculatorServer <- function(input, output, session) {
                 response=response, physparameters=physparameters, table=results))#, parameters=parameters))
   })
   #
-  # Table with physiological parameters
+  # Table with parameters
   #
   output$physparameters <- renderTable({
     simResults()$physparameters
   }, sanitize.text.function = function(x) x)
-  #
-  # Table with classic parameters:
-  #
-  output$classicparameters <- renderTable({
-    simResults()$classicparameters
-  }, sanitize.text.function = function(x) x)
-  
   #
   # Table with results:
   #
@@ -516,7 +502,7 @@ SingleStockCalculatorServer <- function(input, output, session) {
                           TeX("$\\textit{F}_{lim}$"),
                           TeX("$\\textit{F}_{max}$"),
                           TeX("$\\textit{F}_{msy}$")),
-            main="Mortatlity reference points",
+            main="Mortality reference points",
             xlab=TeX("Fishing mortality (yr$^{-1}$)"),
             horiz=TRUE, las=1,
             border=NA)
@@ -558,18 +544,10 @@ SingleStockCalculatorServer <- function(input, output, session) {
   
   
 }
-
-
-
-#
+# ======================================================
 # Tools for plotting
-#
-#require(ggplot2)
-#require(scales)
-#require(caTools)
+# ======================================================
 require(latex2exp)
-#require(cowplot)
-#require(grImport)
 
 singlewidth <- 8/2.54 # panel width in cm
 doublewidth <- 13/2.54
@@ -579,8 +557,6 @@ if(.Platform$OS.type=="windows") {
   quartz<-function(width, height) 
     windows(width=width, height=height)
 }
-
-# Base R plotting tools =====================================================
 
 bottom <- 1
 left <- 2
@@ -641,37 +617,6 @@ defaultplotvertical <- function(
 {
   par(mfcol=mfcol, oma=oma, mar=mar, ps=ps, tcl=tcl, mgp=mgp, cex=cex, cex.axis=cexaxis, ...) 
   assign("iPlot", 1, envir = .GlobalEnv)
-}
-
-test <- function() {
-  defaultplot()
-  defaultpanel(xlab="x", ylab="y",xlim=c(0.1,10), ylim=c(0.1,10))
-  points(1,1)
-  
-  defaultplot()
-  loglogpanel(xlab="x", ylab="y",xlim=c(0.1,10), ylim=c(0.1,10))
-  points(1,1)
-  
-  defaultplothorizontal(nPanels = 3)
-  loglogpanel(xlab="x", ylab="y",xlim=c(0.1,10), ylim=c(0.1,10))
-  points(1,1)
-  loglogpanel(xlab="x", ylab="",xlim=c(0.1,10), ylim=c(0.1,10), yaxis = FALSE)
-  points(1,1)
-  loglogpanel(xlab="x", ylab="",xlim=c(0.1,10), ylim=c(0.1,10), yaxis = FALSE)
-  points(1,1)
-  
-  defaultplothorizontal(nPanels = 2)
-  defaultpanel(xlab="x", ylab="y",xlim=c(0.1,10), ylim=c(0.1,10))
-  points(1,1)
-  defaultpanel(xlab="x", ylab="",xlim=c(0.1,10), ylim=c(0.1,10), yaxis = FALSE)
-  points(1,1)
-  
-  defaultplotvertical(nPanels = 2)
-  loglogpanel(xlab="", ylab="y",xlim=c(0.1,10), ylim=c(0.1,10), xaxis=FALSE)
-  points(1,1)
-  loglogpanel(xlab="x", ylab="y",xlim=c(0.1,10), ylim=c(0.1,10))
-  points(1,1)
-  
 }
 
 defaultpanel <- function(xlim, ylim, 
@@ -795,20 +740,6 @@ vline <- function(x=0, lty='dotted', col="black") {
     lines(x=x*c(1,1), y=10^par("usr")[3:4], lty=lty, col=col)
   else
     lines(x=x*c(1,1), y=par("usr")[3:4], lty=lty, col=col)
-}
-
-pdfplot <- function(filename, FUN, ..., width=singlewidth, height=height) {
-  pdf(filename, width=width, height=height, useDingbats=FALSE)
-  FUN(...)
-  dev.off()  
-}
-
-addEpsPicture <- function(sName, x, y, width=1) {
-  # Convert the picture
-  sOutName = paste(sName,'.xml',sep='')
-  PostScriptTrace(sName, sOutName)
-  # Add it
-  grid.picture(readPicture(sOutName), x=x, y=y, width=width)
 }
 
 ribbon <- function(x,ymin=NA,ymax,col=lightgrey) {
