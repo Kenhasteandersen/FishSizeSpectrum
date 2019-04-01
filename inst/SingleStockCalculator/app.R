@@ -23,8 +23,11 @@ SingleStockCalculatorUI <- fluidPage(
   p('Calculate all demographic quantities and the response to fishing of single stock',
     'using the procedures described in: K.H.Andersen (2019)',
     em('Fish Ecology, Evolution, and Exploitation'), 
-    'Princeton University Press.'),
-  
+    a(href="https://press.princeton.edu/titles/13516.html",'Princeton University Press.'))
+  ,
+  p('Code on ',
+    a(href="https://github.com/Kenhasteandersen/FishSizeSpectrum", "github"),'')
+  ,
   sidebarLayout(
     #
     # The side bar where parameters are defined:
