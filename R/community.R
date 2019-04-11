@@ -87,11 +87,14 @@ paramTraitbasedmodel <- function(
 #
 # Base parameters for the single-species model embedded in a dynamic community:
 #
-paramConsumerResourcemodel <- function(W, facRmax) {
+# facRmax determines the importance of the SR relationship. Set it to a high 
+# value to avoid the effect of the SR relation all together (default).
+#
+paramConsumerResourcemodel <- function(W, facRmax=1e8) {
   param <- paramTraitbasedmodel(W=W)
   param$sigma <- 1 # Assume a single species with narrow feeding preference
   
-  # Fix maximum recruitment. Set to high value to avoid the SR-relation
+  # Set maximum recruitment. 
   param$Rmax <- facRmax * param$A * param$KR * param$w0^-param$a *
     W^(-2-param$q+2*param$n+param$a)
   
