@@ -85,7 +85,7 @@ paramTraitbasedmodel <- function(
   return(param)
 }
 #
-# Base parameters for the single-species model embedded in a static community:
+# Base parameters for the single-species model embedded in a dynamic community:
 #
 paramConsumerResourcemodel <- function(W, facRmax) {
   param <- paramTraitbasedmodel(W=W)
