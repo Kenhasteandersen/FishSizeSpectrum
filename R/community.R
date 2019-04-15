@@ -8,7 +8,6 @@
 
 require(limSolve)
 require(reshape)
-library(tictoc)
 library(deSolve)
 
 #
@@ -120,7 +119,7 @@ runspectrum <- function(param, prev_run=NULL)
   # --------------------------------------
   # Set up grids
   # --------------------------------------
-  tic()
+  #tic()
   # Fish grid:
   grid = makegrid(param$wrec, param$wMax, param$GridExpand)
   w = grid$w
@@ -333,8 +332,8 @@ runspectrum <- function(param, prev_run=NULL)
   result$R$Y <- melt(Ysave)$value
   result$R$R0 <- melt(R0save)$value
   
-  if (param$bVerbose)
-    toc()
+  #if (param$bVerbose)
+  #  toc()
   return(result)
 }
 #
