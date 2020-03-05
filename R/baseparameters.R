@@ -2,7 +2,7 @@
 # Default values of all parameters
 #
 
-baseparameters <- function(W=NULL)
+baseparameters <- function(W=NULL, A=5.35)
 {
   p <- list()
   
@@ -11,7 +11,7 @@ baseparameters <- function(W=NULL)
   # Physiological parameters:
   p$W <- W # g
   p$n <- 3/4
-  p$A <- 5.35 # g^0.25 / yr
+  p$A <- A # g^0.25 / yr
   p$epsA <- 0.6 # Assimilation efficiency
   p$epsEgg <- 0.22
   p$etaM <- 0.28
