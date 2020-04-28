@@ -3,6 +3,7 @@
 #
 library(pracma)
 
+#test 
 baseparamQG <- function(wm=1000, kr=NULL, p=baseparameters()) {
   p$wm <- wm
 
