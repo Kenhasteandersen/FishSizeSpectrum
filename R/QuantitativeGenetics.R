@@ -5,7 +5,8 @@ library(pracma)
 
 baseparamQG <- function(wm=1000, kr=NULL, p=baseparameters()) {
   p$wm <- wm
-  
+
+  # test  
   # Set a default value of kr either from a specification of wm or W
   if (!is.null(p$W))
     p$kr <- p$A * p$W^(p$n-1)
