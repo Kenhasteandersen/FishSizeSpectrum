@@ -505,7 +505,7 @@ SingleStockCalculatorServer <- function(input, output, session) {
                           TeX("$\\textit{F}_{lim}$"),
                           TeX("$\\textit{F}_{max}$"),
                           TeX("$\\textit{F}_{msy}$")),
-            main="Mortatlity reference points",
+            main="Mortality reference points",
             xlab=TeX("Fishing mortality (yr$^{-1}$)"),
             horiz=TRUE, las=1,
             border=NA)

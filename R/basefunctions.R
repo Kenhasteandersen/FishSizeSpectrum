@@ -288,6 +288,20 @@ calc_rana2 <- function(W, p=baseparameters()) {
                                                      W^((a - n)*(-1 + n))*w0^(-1 + a + n - a*n)*epsilon^(1 - n))^ (1/(1 - n)))/((-1 + n)*p$A*W^n*w0^n))))/(W*w0 - W^(2 - n)*w0^n)
 }
 #
+# Population growth rate from analytical approximation #3
+#
+calc_rana3 <- function(W, p=baseparameters()) { 
+  n <- p$n
+  a <- p$a
+  z <- W/p$w0
+  epsilon <- p$epsEgg*p$epsR
+  
+  return(
+    p$A * (n-1)/(z^(n-1)-1) * W^(n-1) *
+      ((1-a)*log(z) + log(epsilon/a))
+  )
+}
+#
 # Functions for various types of fishing gear:
 #
 fishingTrawl <- function(w,pp) {
