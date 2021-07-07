@@ -22,7 +22,13 @@ weight2length <- function(weight)
 # Calculate the A-parameter from observations of K and Linf:
 calcA <- function(K,Linf, p=baseparameters())
 {
-  3*p$c^0.25 * p$etaM^(-1/12) * K * Linf^(3/4)
+  if (p$n == 2/3) {
+    return( 3*p$c^(1/3)*K*Linf )
+  }
+  else
+  {
+    return(3*p$c^0.25 * p$etaM^(-1/12) * K * Linf^(3/4))
+  }
   #-p$c^(1-p$n) * p$etaM^(1-p$n)/((1-p$n)*log(1-p$etaM^(1/3))) *
   #  K * Linf^(3*(1-p$n))
 }
